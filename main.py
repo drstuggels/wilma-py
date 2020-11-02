@@ -8,7 +8,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-wilma_url = "https://yvkoulut.inschool.fi"
+wilma_url = getenv("wilma")
 
 username = getenv("username")
 password = getenv("password")
