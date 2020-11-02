@@ -13,8 +13,6 @@ wilma_url = "https://yvkoulut.inschool.fi"
 username = getenv("username")
 password = getenv("password")
 
-date = "1.11.2020"
-
 
 class Lesson:
     def __init__(self, json: dict):
@@ -97,12 +95,7 @@ def fetch():
         token = soup.select_one('input[name=formkey]').get('value')
 
         # create the payload and make the post request
-        data = {
-            "date": date,
-            "getfullmonth": True,
-            "formkey": token,
-        }
-        o = r.post(f'{wilma_url}/overview', data=data)
+        o = r.post(f'{wilma_url}/overview', data={"formkey": token})
 
         # parse the schedule section of the json response
         schedule_json = o.json()["Schedule"]
