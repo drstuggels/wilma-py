@@ -105,8 +105,13 @@ def fetch():
 
     # print test output
     next_lesson = schedule.next_lesson()
-    print(
-        f'The next lesson ({next_lesson.name}), which is also called "{next_lesson.long_name}", starts at {next_lesson.start.strftime("%H:%M")}. It is held in class "{next_lesson.room}". The teacher ({next_lesson.teacher_id}) is called {next_lesson.teacher_name}. The lesson ends at {next_lesson.end.strftime("%H:%M")}.')
+    if(next_lesson == False):
+        print("There are no more lessons today")
+    elif(next_lesson == []):
+        print("No lessons today or on monday")
+    else:
+        print(
+            f'The next lesson ({next_lesson.name}), which is also called "{next_lesson.long_name}", starts at {next_lesson.start.strftime("%H:%M")}. It is held in class "{next_lesson.room}". The teacher ({next_lesson.teacher_id}) is called {next_lesson.teacher_name}. The lesson ends at {next_lesson.end.strftime("%H:%M")}.')
 
 
 if __name__ == "__main__":
