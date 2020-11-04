@@ -44,32 +44,8 @@ class Schedule:
             lesson = Lesson(l)
             self.lessons.append(lesson)
 
-    def next_lesson(self, add_days: int = 0):
-        # add optional day shift
-        date_today = dt.date.today()+dt.timedelta(days=add_days)
-
-        # return mondays first lesson if weekend
-        if add_days == 0:
-            weekday = dt.date.weekday(date_today)
-            if weekday == 5 or weekday == 6:
-                for lesson in self.lessons:
-                    if lesson.date == date_today + dt.timedelta(days=(7-weekday)):
-                        return lesson
-
-        # get todays lessons
-        today = []
-        for lesson in self.lessons:
-            if lesson.date == date_today:
-                today.append(lesson)
-
-        # if no lessons, return empty list
-        if today == []:
-            return []
-
+    def next_lesson(self):
         # return the next lesson that hasn't yet begun
-        for lesson in today:
+        for lesson in self.lessons:
             if lesson.start > dt.datetime.now():
                 return lesson
-
-        # if there are no lessons left, return False
-        return False
