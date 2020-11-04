@@ -9,4 +9,4 @@ if __name__ == "__main__":
     production = getenv("FLASK_ENV") == "production"
     app.run(host=getenv(
         "host"), port=getenv(
-        "port"), debug=(not(production)))
+        "port"), debug=(not(production)),threaded=True)
