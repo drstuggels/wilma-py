@@ -7,10 +7,10 @@
 
 ## .env :wrench:
 ```bash
-username=user.name
-password=password1234
-wilma=https://school.wilma.fi
+host=127.0.0.1
+port=5555
 ```
 
 ## todo :white_check_mark:
 - [ ] Exams
+- [ ] Homework
