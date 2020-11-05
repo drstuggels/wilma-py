@@ -48,4 +48,5 @@ class Schedule:
         # return the next lesson that hasn't yet begun
         for lesson in self.lessons:
             if lesson.start > dt.datetime.now():
+                print(lesson.start, dt.datetime.now())
                 return lesson
