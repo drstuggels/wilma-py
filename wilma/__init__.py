@@ -4,6 +4,20 @@ from bs4 import BeautifulSoup as bs
 from wilma.classes import Lesson, Schedule
 
 
+def format_alfred(dikt: dict):
+    print("heylllo", dikt)
+    items = []
+    for d in dikt:
+        item = {
+            "title": d,
+            "subtitle": dikt[d],
+            "type": "default",
+        }
+        items.append(item)
+
+    return items
+
+
 def fetch(wilma_url: str, username: str, password: str):
     with requests.Session() as r:
         # get the front page to get SESSIONID needed for login

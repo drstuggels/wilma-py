@@ -1,7 +1,7 @@
 from flask import Flask
 from flask_cors import CORS
 from flask_restful import Api, Resource, reqparse
-from wilma import fetch
+from wilma import fetch, format_alfred
 import json
 
 app = Flask(__name__)
@@ -21,11 +21,12 @@ class Next_Lesson(Resource):
             schedule = fetch(args["url"], args["username"], args["password"])
         except:
             return {"message": "Fail"}, 500
+
         next_lesson = schedule.next_lesson()
         if next_lesson == False or next_lesson == []:
             return {"message": "Success", "next": []}, 200
         else:
-            return {"message": "Success", "next": next_lesson.to_dict()}, 200
+            return {"items": format_alfred(next_lesson.to_dict())}, 200
 
 
 api.add_resource(
