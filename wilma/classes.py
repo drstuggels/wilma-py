@@ -23,15 +23,15 @@ class Lesson:
 
     def to_dict(self):
         dikt = {
-            "date": self.date.strftime("%d.%m.%Y"),
-            "start": self.start.strftime("%d.%m.%Y %H:%M"),
-            "end": self.end.strftime("%d.%m.%Y %H:%M"),
             "name": self.name,
             "long_name": self.long_name,
-            "groups": self.groups,
-            "room": self.room,
             "teacher_id": self.teacher_id,
             "teaher_name": self.teacher_name,
+            "start": self.start.strftime("%d.%m.%Y %H:%M"),
+            "end": self.end.strftime("%d.%m.%Y %H:%M"),
+            "room": self.room,
+            "groups": self.groups,
+            "date": self.date.strftime("%d.%m.%Y"),
         }
         return dikt
 
@@ -48,5 +48,4 @@ class Schedule:
         # return the next lesson that hasn't yet begun
         for lesson in self.lessons:
             if lesson.start > dt.datetime.now():
-                print(lesson.start, dt.datetime.now())
                 return lesson

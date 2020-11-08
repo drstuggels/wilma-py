@@ -5,7 +5,6 @@ from wilma.classes import Lesson, Schedule
 
 
 def format_alfred(dikt: dict):
-    print("heylllo", dikt)
     items = []
     for d in dikt:
         item = {
